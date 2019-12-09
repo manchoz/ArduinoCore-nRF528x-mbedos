@@ -1,0 +1,35 @@
+{
+	"macros": [
+		"MBED_HEAP_STATS_ENABLED=1",
+		"MBED_STACK_STATS_ENABLED=1",
+		"MBED_MEM_TRACING_ENABLED=1",
+		"NRFX_GPIOTE_CONFIG_NUM_OF_LOW_POWER_EVENTS=8",
+		"NRFX_WDT_ENABLED=1"
+	],
+	"target_overrides": {
+		"*": {
+			"platform.stdio-buffered-serial": true,
+			"platform.stdio-baud-rate": 115200,
+			"platform.default-serial-baud-rate": 115200,
+			"rtos.main-thread-stack-size": 32768,
+			"target.mbed_app_start": "0x10000"
+		},
+		"ARDUINO_NANO33BLE": {
+            "target.device_has_add": ["WATCHDOG"],
+			"target.components_add": [
+				"SD",
+                "SPIF",
+                "FLASHIAP"
+			],
+			"sd.SPI_MOSI": "P1_1",
+			"sd.SPI_MISO": "P1_8",
+			"sd.SPI_CLK": "P0_13",
+			"sd.SPI_CS": "P1_15",
+			"spif-driver.SPI_MOSI": "P1_1",
+			"spif-driver.SPI_MISO": "P1_8",
+			"spif-driver.SPI_CLK": "P0_13",
+			"spif-driver.SPI_CS": "P1_13",
+			"storage.storage_type": "TDB_EXTERNAL"
+		}
+	}
+}
