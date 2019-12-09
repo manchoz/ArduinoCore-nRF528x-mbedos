@@ -4,12 +4,16 @@ The repository contains the Arduino APIs and IDE integration files targeting a g
 
 ## Installation
 
-Clone the repository in `$sketchbook/hardware/arduino`
+Clone the repository in `$sketchbook/hardware/arduino-challenge`. The sketchbook directory is different depending on your OS:
+
+* GNU/Linux: `$HOME/Arduino`
+* MacOS: `$HOME/Documents/Arduino`
+* Windows: `%USERPROFILE%\Documents\Arduino`
 
 ```bash
-mkdir -p $sketchbook/hardware/arduino
-cd $sketchbook/hardware/arduino
-git clone git@github.com:arduino/ArduinoCore-nRF528x-mbedos mbed
+mkdir -p $sketchbook/hardware/arduino-challenge
+cd $sketchbook/hardware/arduino-challenge
+git clone git@github.com:manchoz/ArduinoCore-mbed -b challenge mbed
 ```
 
 Then clone https://github.com/arduino/ArduinoCore-API in a directory at your choice. Checkout `namespace_arduino` branch.
@@ -18,19 +22,6 @@ Then clone https://github.com/arduino/ArduinoCore-API in a directory at your cho
 git clone git@github.com:arduino/ArduinoCore-API -b namespace_arduino
 ```
 
-Remove the symlink to `api` you can find in  `$sketchbook/hardware/arduino/mbed/cores/arduino` and replace it with a symlink to `ArduinoCore-API/api`
+Remove the symlink to `api` you can find in  `$sketchbook/hardware/arduino-challenge/mbed/cores/arduino` and replace it with a symlink to `ArduinoCore-API/api`
 
-Open Arduino IDE; you should now see three new targets under `MBED boards` label
-
-## Adding an mbed target
-
-Adding a target is a mostly automatic procedure that involves running https://github.com/arduino/ArduinoCore-nRF528x-mbedos/blob/master/mbed-os-to-arduino after setting `BOARDNAME` and `ARDUINOCORE` env variables.
-Actions marked as TODO must be executed manually.
-
-## Using this core as an mbed library
-
-You can use this core as a standard mbed library; all APIs are under `arduino` namespace (so they must be called like `arduino::digitalWrite()` )
-
-The opposite is working as well; from any sketch you can call mbed APIs by prepending `mbed::` namespace.
-
-
+Open Arduino IDE; you should now see a new "Challenge PMC R2DX" target under `Arduino Challenge Boards (Mbed OS)` label (scroll down if needed).
